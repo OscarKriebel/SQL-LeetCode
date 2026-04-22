@@ -7,10 +7,8 @@ SELECT
              THEN 0 ELSE 1 END
     ) AS attended_exams
 FROM Students AS stud
-RIGHT JOIN Subjects AS sub
-    ON 1 = 1
+CROSS JOIN Subjects AS sub
 LEFT JOIN Examinations AS exam
     ON stud.student_id = exam.student_id AND sub.subject_name = exam.subject_name
-WHERE stud.student_id IS NOT NULL
 GROUP BY stud.student_id, stud.student_name, sub.subject_name
 ORDER BY stud.student_id ASC, sub.subject_name ASC
